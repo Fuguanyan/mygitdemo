@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+    body{
+        font-size: 0px;
+
+    }
+        /* 选项卡 */
+    /* .wrapper{
+        position: relative;
+        margin: 0 auto;
+        width: 400px;
+        height: 400px;
+        border: 1px solid #cccc;
+        text-align: center;
+    }
+    .wrapper input{
+        width: 30px;
+        height: 30px;
+    }
+    .wrapper div{
+        position: absolute;
+        top: 30px;
+        left: 0;
+        display: none;
+        width: 400px;
+        height: 370px;
+        text-align: center;
+        line-height: 370px;
+        font-size: 30px;
+        color: #fff;
+    }
+
+    .wrapper div:nth-of-type(1){
+        background: red;
+        display: block;
+    }
+    .wrapper div:nth-of-type(2){
+        background:green;
+    }
+    .wrapper div:nth-of-type(3){
+        background: yellow;
+    }
+    input:checked + div{
+        display: block;
+    } */
+
+    /* 播放器转盘 */
+    /* .wrapper{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .table{
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 50px solid #333;
+        background: url('./timg.jpg');
+        background-size: cover;
+        animation: move 10s linear paused;
+    }
+    .pin{
+        position: absolute;
+        top: -50px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 10px;
+        height: 150px;
+        border-bottom-right-radius: 100%;
+        border-bottom-left-radius: 100%;
+        background: #ccc;
+        transform-origin: top;
+        transform: rotateZ(-60deg);
+        transition: all 1s linear;
+    }
+    @keyframes move{
+        0%{
+            transform: rotate(0deg);
+
+        }
+        100%{
+            transform: rotate(360deg);
+        }
+    }
+    .active{
+        transform: rotate(-30deg);
+    } */
+    
+    /* 弹性盒子三列布局 */
+    /* .wrapper{
+        width: 100%;
+        height: 500px;
+        border: 1px solid red;
+
+        display: flex;
+
+    }
+    .app{
+        text-align: center;
+
+        height: 30px;
+        line-height: 30px;
+        box-sizing: border-box;
+        border: 1px solid #000000;
+        font-size: 20xp;
+    }
+    .app:nth-of-type(1){
+        width: 200px;
+    }
+    .app:nth-of-type(2){
+        flex-grow: 1;
+    }
+    .app:nth-of-type(3){
+        width: 200px;
+    }
+     */
+
+     /* 画三角形 */
+     .item{
+         position: absolute;
+         top: 50px;
+         left: 50px;
+         width: 0px;
+         height: 0px;
+         border: 50px solid transparent;
+         border-left- color: red;
+         background: #ffff;
+     }
+    
+    
+    
+    </style>
+</head>
+<body>
+    <!-- <div class="wrapper">
+        <input type="radio" name="a">
+        <div class="b">aa</div>
+        <input type="radio" name="a">
+        <div>bb</div>
+        <input type="radio" name="a">
+        <div>ccc</div>
+
+
+
+    </div> -->
+
+    <!-- 播放器转盘 -->
+    <!-- <button id="btn">提交</button>
+    <div class="wrapper">
+        <div class="table"></div>
+        <div class="pin"></div>
+
+
+    </div>
+    <script>
+        var Otable = document.getElementsByClassName('table')[0];
+        var Opin = document.getElementsByClassName('pin')[0];
+        var flag = true;
+        btn.onclick = function() {
+            if(flag){
+                flag = false;
+                Opin.className = 'pin active';
+                Otable.style.animationPlayState = 'running';
+            }else{
+                flag = true;
+                Opin.className = 'pin';
+                Otable.style.animationPlayState = 'paused';
+            }
+        }
+    
+    
+    </script> -->
+    <!-- 三列 -->
+    <!-- <div class="wrapper">
+        <div class="app">111</div>
+        <div class="app">222</div>
+        <div class="app">333</div>
+
+    </div> -->
+
+    <div class="item"></div>
+   
+    
+
+
+
+
+</body>
+</html>
