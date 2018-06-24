@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+<body>
+    <script>
+        // geolocation
+
+        // getCurrentPosition()获取当前位置信息
+        
+
+            // 成功
+        function scu(pos) {
+            console.log(pos);
+        }
+            // 失败
+        function err(err) {
+            console.log(err);
+
+        }
+        window.navigator.geolocation.getCurrentPosition(suc, err);
+
+
+        // watchPosition()监视位置变化，和获取参数一样
+        var id = geolocation.watchPosition()
+
+        // clearWatch()清楚位置监视
+        clearWatch(id) 
+
+
+        // devicemotion监听加速变化
+
+        window.addEventListener('decicemotion', function(event) {
+            console.log(event);
+        });
+
+        // deviceorientation监听设备在方向上的变化
+        window.addEventListener('deviceorientation', function(event) {
+            console.lg(event);
+        })
+
+        // devicemotion事件所包含的属性
+        // accelerationlncludingGravity() 重力，重心 引力加速度
+        // acceleration(需要陀螺仪的支持)重力加速度
+        // rotationRate(alpha, beta, gamma)旋转速率
+        // interval获取的时间间隔
+        // 均为只读属性
+
+         window.addEventListener('decicemotion', function(e) {
+            console.log(e);
+            item.innerHTML = e.accelerationlncludingGravity.x + '-' + e.accelerationlncludingGravity.y + '-' + e.accelerationlncludingGravity.z
+
+        });
+    
+    
+    
+    </script>
+
+
+
+
+
+</body>
+</html>
