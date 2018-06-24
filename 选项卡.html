@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>选项卡</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .wrapper{
+        width: 300px;
+        height: 300px;
+        border: 1px solid red;
+        /* position: absolute; */
+
+    }
+    .wrapper .btn{
+        text-align: center;
+        /* display: none; */
+    }
+   .b-active{
+       background: blue;
+   }
+    button{
+        width: 50px;
+        height: 50px;
+    }
+    .wrapper .content div{
+        width: 300px;
+        height: 250px;
+        background: chocolate;
+        text-align: center;
+        line-height: 250px;
+        display: none;
+    }
+   .wrapper .content div.c-active{
+       display: block;
+   }
+
+    
+    
+    </style>
+
+</head>
+<body>
+    <div class="wrapper">
+        <div class="btn">
+            <button class="b-active">1</button>
+            <button>2</button>
+            <button>3</button>
+        </div>
+        <div class="content">
+            <div class="c-active">111</div>
+            <div>222</div>
+            <div>333</div>
+        </div>
+    </div>
+    <script src="jquery-3.3.1.js"></script>
+    <script>
+        $('button').click(function () {
+            $('.b-active').removeClass('b-active');
+            $(this).addClass('b-active');
+            $('.c-active').removeClass('c-active');
+            var index = $(this).index();
+            $('.content div').eq(index).addClass('c-active');
+        })
+    
+    
+    </script>
+
+
+
+
+
+
+
+</body>
+</html>
