@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{
+        padding: 0;
+        margin: 0;
+        text-decoration: none;
+        list-style: none;
+    }
+    .wrapper{
+        margin: 100px;
+    }
+    input{
+        width: 400px;
+        height: 40px;
+    }
+    ul{
+        display: none;
+        width: 400px;
+        border: 1px solid #ccc;
+    }
+    li:hover{
+        background: #cccccc;;
+    }
+    a{
+        margin: 5px;
+        font-size: 14px;
+        color: #999;
+    }
+    
+    
+    
+    
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <input type="text">
+        <ul></ul>
+    </div>
+    <script>
+        // 求字节长度
+        //     var str = 'hadekdajkfsn iidadad中国人';
+        //     function chaDu(str) {
+        //         var count = str.length;
+        //         for(var i = 0; i < str.length; i++) {
+        //             if(str.charCodeAt(i) > 255) {
+        //                 count ++;
+
+        //             }
+
+        //         }
+        //         return count;
+        //     }
+
+
+        // // 封装type方法
+        //     function type(target) {
+        //         var ret = typeof(target);
+        //         var tempLate = {
+        //             "object Array" : "array",
+        //             "object Object" : "object",
+        //             "object Number" : "number object ",
+        //             "object Boolean" : "boolean object",
+        //             "object String" : "string"
+        //         }
+        //         if(target === null){
+        //             return "null";
+        //         }
+        //         if(ret == "object"){
+        //             var str = object.prototype.tostring.call(target);
+        //             return tempLate[str];
+        //         }else{
+        //             return ret;
+        //         }
+
+        //     }
+
+        // }
+
+
+        // // 数组去重原型上编程
+        //     var arr = [1,1,1,2,2,2,3,3,4,5,6,5,7,6];
+        //      Array.prototype.unjque = function () {
+        //         var temp = {};
+        //         var str = [];
+        //         len = this.length;
+        //      for(var i = 0; i < len; i ++){
+        //         if(!temp[this[i]]){
+        //             temp[this[i]] = 'abc';
+        //             arr.push(this[i]);
+        //         }
+        //         return arr;
+        //     }
+
+
+
+        // }
+
+
+        //     // 闭包实现累加器
+        //     function add() {
+        //         var count = 0;
+        //         function demo() {
+        //             count ++;
+        //             console.log(count);
+        //         }
+        //         return demo;
+        //     }
+
+        //     var counter = add();
+        //     counter();
+
+
+        //     // 闭包实现缓存
+        //     function test() {
+        //         var num = 100;
+        //         function a () {
+        //             num ++;
+        //             console.log(num);
+        //         }
+        //         function b () {
+        //             num --;
+        //             console.log(num);
+        //         }
+        //         return [a,b];
+        //     }
+        //     var myArr = test();
+        //     myArr[0]();
+        //     myArr[1]();
+
+
+        //     // 继承圣杯模式
+        //     function inherit(Target, Oriqin) {
+        //         function F() {};
+        //         F.prototype = Oriqin.prototype;
+        //         Target.prototype = new F;
+        //         // 继承自谁
+        //         Target.prototype.constuctor = Target;
+        //         // 超类
+        //         Target.prototype.uber = Target;
+
+        //     }
+        //     Father.prototype.lastName = 'fu';
+        //     function Father() {
+
+        //     }
+        //     function Son() {
+
+        //     }
+        //     inherit(Son, Father);
+        //     var son = new Son;
+        //     var father = new Father;
+
+
+        //     // 浅层克隆 clone
+        //     var obj = {
+        //         name : 'abs',
+        //         age : 123,
+        //         sex : 'female',
+        //         maad : ['vasi', 'hehe'],
+        //     }
+        //     var obj1 = {};
+
+        //     function clone(oriqin, target) {
+        //         var target = target || {};
+        //         for(var prop in obj) {
+        //             target[prop] = oriqin[prop];
+        //         }
+        //         return target;
+        //     }
+        //     clone(obj, obj1);
+
+
+        //     // 深层克隆clone
+        //     function deepClone(oriqin, target) {
+        //         var target = target || {};
+        //         toStr = object.prototype.tostring;
+        //         arrStr = "[object Array]";
+        //         for(var prop in obj) {
+        //             if(oriqin.hasOwnproperty(prop)){
+        //                 if(oriqin[prop] !== "null" && typeof(oriqin[prop]) == 'object') {
+        //                     target[prop] = toStr.call(oriqin[prop]) == arrStr ? [] : {};
+        //                     deepClone(oriqin[prop], target[prop]);
+        //                 }else{
+        //                     target[prop] = oriqin[prop];
+        //                 }
+        //             }
+        //         }
+        //         return target;
+
+
+        //     }
+
+        //     // 返回元素e的n层祖先元素节点
+        //     function retParent(elem, n) {
+        //         while(lelm && n){
+        //             elem = elem.parentElement;
+        //             n --;
+
+        //         }
+        //         return elem;
+
+
+
+        //     }
+        //     var i = document.getElementsByTagName('i')[0];
+
+
+        //     // 封装myChildren功能，解决部分浏览器兼容问题
+
+        //     Element.prototype.myChildren = function () {
+        //         var child = this.childNodes;
+        //         var len = child.length;
+        //         var arr = [];
+        //         for(var i = 0; i < len; i ++) {
+        //             if(child[i].nodeType == 1) {
+        //                 arr.push(child[i]);
+        //             }
+        //         }
+        //         return arr;
+
+        //     }
+        //     var div = document.getElementsByTagName('div')[0];
+
+        //     // 返回元素e的第N个兄弟元素节点，n为正，返回后面的兄弟元素节点，n为负，返回前面的，n为0返回自己
+        //     function retSibling(e, n) {
+        //         while(e && n) {
+        //             if(n > 0) {
+        //                 e = e.nextElementSibling;
+        //                 n --;
+        //             }else{
+        //                 e = e.previousElementSibling;
+        //                 n ++;
+        //             }
+        //         }
+        //         return e;
+
+
+
+        //     }
+
+
+        // 数组扁平化两种方法
+    //     var arr = [1, 2, 3, 4, [5, 6], [8, 9], {}, []];
+    //     function flatten(arr) {
+    //         var arr = arr || [];
+    //         return arr.reduce(function (prev, next) {
+    //             return Object.prototype.toString.call(next) == '[object Array]' ? prev.concat(flatten(next)) : prev.concat(next);
+
+    //         }, [])
+
+
+    //     }
+    //     // es6方法
+
+    //     const flatten1 = arr => arr.reduce((prev, next) => Object.prototype.toString.call(next) == '[object Array]' ? prev.concat(flatten1(next)) : prev.concat(next), []);
+
+
+
+    //     // 封装事件兼容方法
+    //     function addEvent(elem, type, handle) {
+    //         if (elem.addEventListener) {
+    //             elem.addEventListener(type, handle, false);
+    //         } else if (elem.attachEvent) {
+    //             elem.attachEvent('on' + type, function () {
+    //                 handle.call(elem);
+    //             })
+    //         } else {
+    //             elem['on' + type] = handle;
+    //         }
+
+
+
+    //     }
+
+    //     // 封装取消冒泡的方法
+    //     div.onclick = function (e) {
+    //         stopBubble(e);
+    //         this.style.background = red;
+    //     }
+    //     function stopBubble(event) {
+    //         if (event.stopPropagation) {
+    //             event.stopPropagation();
+    //         } else {
+    //             event.cancelBubble = ture;
+    //         }
+    //     }
+
+    //     // 取消右键默认事件
+    //     documnet.oncontextmenu = function (e) {
+    //         consloe.log('a');
+    //         cancelHandler(e);
+    //     }
+    //     function cancelHandler(ecent) {
+    //         if (event.prevrntDefault) {
+    //             event.preventDefault();
+    //         } else {
+    //             event.returnValue = false;
+    //         }
+    //     }
+
+    //     // 事件委托
+    //     // 获取dom元素
+    //     var ul = document.getElementsByTagName('ul')[0];
+    //     // 绑定事件
+    //     ul.onclick = function (e) {
+    //         // 兼容     ie
+    //         var event = e || window.event;
+    //         var target = event.target || event.srcElement;
+    //         consloe.log(target.innerText);
+    //     }
+
+
+    //     // 封装异步加载
+    //     function loadScript(url, callback) {
+    //         var script = document.createElement('script');
+    //         script.type = 'text/javascript';
+    //         if(script.readyState) {
+    //             script.onreadystatechange = function () {
+    //                 // ie方法
+    //                 if(script.readyState == 'complete' || script.readyState == 'loaded') {
+    //                    callback(); 
+    //                 }
+
+
+
+    //             }
+
+    //         }else{
+    //             script.onload = function () {
+    //                 // w3c标准
+    //                 callback();
+    //             }
+    //         }
+    //         script.src = url;
+    //         documnet.head.appendChild(script);
+
+
+
+
+    //     }
+    //     loadScript('demo.js', function () {
+    //         text();
+    //     });
+
+
+    //   2.  // 网络方面
+
+
+    //     // 封装ajax兼容性写法
+                    //  方式     地址    回调函数  是否异步
+    //     function ajax(method, url, callback, data, flag) {
+    //         var xhr = null;
+    //         // 兼容ie
+    //         if(window.XMLHttpRequest){
+    //             // 创建ajax对象主流浏览器
+    //             xhr = new XMLHttpRequest();
+    //         }else{
+    //             // ie方法
+    //             xhr = new ActiveXObject('Microsoft.XMLHttp')
+    //         }
+    //         // 监听对象状态变化
+    //         xhr.onreadystatechange = function() {
+    //             if(xhr.readyState == 4){
+    //                 // 状态码
+    //                 if(xhr.status == 200){
+    //                     // 获取字符串形式的响应数据
+    //                     callback(xhr.responseText);
+    //                 }else{
+    //                     console.log('error');
+    //                 }
+    //             }
+    //         }
+    //             // 判断请求方式  （转成大写方法）
+    //         menthod = menthod.toUpperCase();
+    //         if(menthod == 'GET'){
+    //             var date = new Date();
+    //                 timer = date.getTime();
+    //             xhr.open(menthod, url + '?' + data + '&timer=' + timer, flag);
+    //             xhr.send();
+    //         }else if(method == 'POST'){
+    //             xhr.open(method, url, flag);
+    //             // 设置请求头编码格式
+    //             xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+    //             xhr.send(data);
+    //         }
+    //     }
+
+
+        // jsonp跨域获取信息
+        var Oinput = document.getElementsByTagName('input')[0],
+            Oul = document.getElementsByTagName('ul')[0];
+        Oinput.oninput = function() {
+            var value = this.value;
+            var Oscript = document.createElement('script');
+            Oscript.src = 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=' + value + '&cb=doJson';
+            document.body.appendChild(Oscript);
+            document.body.removeChild(Oscript);
+        }
+        function doJson(data) {
+            var s = data.s,
+                str = '';
+            if(s.length > 0){
+                s.forEach(function (ele, index) {
+                    str += '<li><a href=https://www.baidu.com/s?wd=' + ele + '>' + ele + '</a></li>';
+                  
+                })
+                Oul.innerHTML = str;
+                Oul.style.display = 'block';
+            }else{
+                Oul.style.display = 'none';
+            }
+        }
+
+
+        // cookie的设置
+        var manageCookie = {
+            // 设置cookie
+            setCookie:function(name, value, time) {
+                documnet.cookie = name + '=' + value +';max-age=' + time;
+                return this;
+            },
+            // 删除cookie
+            removeCookie:function(name) {
+                return this.setCookie(name, '', -1);
+            },
+            // 获取cookie
+            getCookie:function(name, callback) {
+                var allCookieArr = document.cookie.split(';');
+                for(var i = 0; i < allCookieArr.lenght; i++) {
+                    var itemCookieArr = callCookieArr[i].split('=');
+                    if(itemCookieArr[0] == name) {
+                        callback(itemCookieArr[1]);
+                        return this;
+                    }
+                }
+                callback(undefined);
+                return this;
+            }
+        }
+        manageCookie
+            // 设置
+            .setCookie('color', 'orange', 10000)
+            .setCookie('teger1', 'aimee', 10000)
+            .setCookie('age', '18',1000)
+            // 删除
+            .removeCookie('color')
+            // 获取
+            getCookie('age',function(data) {
+                console.log(data);
+            })
+
+
+            // 获取窗口尺寸
+            function getWindowOffset() {
+                // IE8以上兼容
+                if(window.innerWidth) {
+                    return {
+                        w : window.innerWidth,
+                        h : window.innerHeight
+                    }
+                    
+                    }else{
+                        if(document.compatMode === 'BackCompat') {
+                            // 怪异模式
+                            return {
+                                w : document.body.clientWidth,
+                                h : document.body.clientWidth
+                            }
+                        }else{
+                            return {
+                                // 标准模式都兼容
+                                w : documnet.documentElement.clientWidth,
+                                h : document.documentElement.clientHeight
+                            }
+                        }
+                }
+            }
+
+
+
+
+
+    </script>
+
+
+
+
+
+
+</body>
+
+</html>
