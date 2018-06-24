@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>小demo</title>
+    <style>
+        * {
+            margin: 0;
+        }
+
+        #box {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            position: absolute;
+            left: 0;
+            top: 0;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        #box1 {
+            height: 50px;
+            width: 500px;
+            text-align: center;
+            color: red;
+            font-size: 20x;
+            font-weight: bolder;
+            /* 竖直居中 */
+            line-height: 50px;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 拖拽 -->
+    <div id="box"></div>
+    <script>
+        var Obox = document.getElementById('box');
+        var Body = document.getElementsByTagName('body')[0];
+        function bindEvent(ele, wrap) {
+            var X,
+                Y,
+                boxL,
+                boxT,
+                disL,
+                disT;
+            var drag = false;
+
+            // 鼠标点击
+            ele.onmousedown = function (e) {
+                drag = true;
+                var event = event || window.event;
+                // 鼠标在屏幕上的坐标点
+                X = event.clientX;
+                Y = event.clientY;
+
+                // 元素起始位置
+                boxL = ele.offsetLeft;
+                boxT = ele.offsetTop;
+
+                // 元素移动到的位置
+                disL = X - boxL;
+                disT = Y - boxT;
+            };
+
+            // 鼠标移动
+            Body.onmousemove = function (e) {
+                var event = event || window.event;
+                if (drag) {
+                    ele.style.left = event.clientX - disL + 'px';
+                    ele.style.top = event.clientY - disT + 'px';
+                }
+
+
+            };
+
+            // 鼠标抬起
+            ele.onmouseup = function () {
+                drag = false;
+            }
+        }
+
+        bindEvent(Obox, Body);
+    </script>
+
+
+    <!-- 扇形loading -->
+    <!-- <canvas id = "can" height="500px" width="500px"></canvas>
+    <div id = "box1"></div>
+
+    <script>
+        var can = document.getElementById('can');
+        var Obox1 = document.getElementById('box1');
+        var ctx = can.getContext('2d');
+        CanvasRenderingContext2D.prototype.sector = function(x, y, r, sDeg, eDeg) {
+            //圆心点, 半径， 角度 --》起始角度 ，终止角度
+            this.save();
+            this.beginPath();
+            this.moveTo(x, y);
+
+            // 角度 --》弧度
+            this.arc(x, y, r, sDeg*Math.PI/180, eDeg*Math.PI/180, false);
+            this.closePath();
+            this.restore();
+            return this;
+        }
+
+        var timer;
+        var angle = 0;
+        var per;
+        ctx.fillStyle = 'red';
+        // angle / 360 = per / 100
+        // 5 * angle / 18
+
+    
+        // 持续角度变化
+    timer = setInterval(function () {
+        angle += 5;
+        ctx.sector(250, 250, 100, 0, angle).fill();
+        per = (5 * angle / 18).toFixed(2);
+        Obox1.innerHTML = '加载中' + per + '%';
+        if(angle == 360){
+            clearInterval(timer);
+            Obox1.innerHTML = '加载完成！'
+        }
+    }, 200)
+    
+    
+    
+    
+    </script> -->
+
+
+
+</body>
+
+</html>
